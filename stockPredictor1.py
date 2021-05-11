@@ -1,10 +1,15 @@
+# Ricky Rodriguez
+# CSCI 499
+
+# Stock Predictor for Porfolio Optimization using Linear Regression
+
 # Importing libraries
 import pandas as pd
 import numpy as np
-
 import datetime
 import math
 
+# Pearson's Function
 def PCC(dataframe: pd, features: list, target: str):
     p_values = []
     
@@ -22,6 +27,7 @@ def PCC(dataframe: pd, features: list, target: str):
     
     return p_values
 
+# Kernelization function
 def kernelize(df: pd, features: list, value):
     dataframe = df.copy()
     if type(value) is list:
@@ -34,6 +40,7 @@ def kernelize(df: pd, features: list, value):
     
     return dataframe
 
+# Mean Squard Error function
 def MSE(y_pred_values, y_values, data_length):
     
     sum_error = sum((y_pred_values - y_values) ** 2)
@@ -42,6 +49,7 @@ def MSE(y_pred_values, y_values, data_length):
     
     return cost
 
+# Multiple Linear Regression function
 def LinearRegression(dataframe: pd, 
                      features: list,
                      target: str,
@@ -95,12 +103,14 @@ def LinearRegression(dataframe: pd,
         
     return (weights, bias)
 
+# Function to predict new values
 def predict(df: pd, features: list, weights: list, bias: int, new_column_name = "Prediction"):
     dataframe = df.copy()
     x_values = dataframe[features].to_numpy()
     dataframe[new_column_name] = np.dot(x_values, weights) + bias
     return dataframe
 
+# Function to expand stock data dataframe so that it contains the past "length" values
 def expandShiftRight(df, column, length, fillna_values=[]):
     new_df = df.copy()
     column_names = list(df.columns.values)
@@ -116,21 +126,7 @@ def expandShiftRight(df, column, length, fillna_values=[]):
     new_df = new_df.dropna()
     return new_df
 
-def meanRightShift(df, start_col, end_col):
-    
-    
-    pos = df.columns.get_loc(start_col)
-    end_pos = df.columns.get_loc(end_col) + 1
-
-    mean_list = []
-    
-    while (pos + 1 <= end_pos):
-        mean = df.iloc[0:1, pos:end_pos].mean(axis=1)[-1:].values[0]
-        mean_list.append(mean)
-        pos += 1
-    
-    return mean_list
-
+# Function to create features for the new predicted dataframe
 def rightShift(df, start_col, shift_length, fillna_val):
     new_df = df.copy()
     start_pos = df.columns.get_loc(start_col)
@@ -201,5 +197,4 @@ if __name__ == "__main__":
         save_name = stock + "_Pred.csv"
         pred_df.to_csv(save_name, index=False)
         print("Predictions computed, saved as " + save_name + ".")
-
 
