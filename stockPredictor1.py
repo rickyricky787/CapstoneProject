@@ -162,10 +162,10 @@ if __name__ == "__main__":
         p_values = PCC(stock_df, features, target)
 
         # Kernelizing features to the power of their p-value
-        stock_df = kernelize(stock_df, features, p_values)
+        train_df = kernelize(stock_df, features, p_values)
 
         # Getting the weights and the bias values by using linear regression
-        weights, bias = LinearRegression(stock_df, features, target)
+        weights, bias = LinearRegression(train_df, features, target)
 
         # Setting up new dataframe to store predictions (pred_df)
         new_dates = pd.bdate_range(stock_df.Date.iloc[-1] + datetime.timedelta(days=1), periods=period)
