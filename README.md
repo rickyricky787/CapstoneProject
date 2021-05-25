@@ -7,12 +7,8 @@ A porfolio optimization project, where it predicts the closing stock value for s
 - Samuel Khong
 - Jiayao Zhou
 
-### Languages
-The linear reression portion of the project was implemented in Python. The reinforcement learning portion of the project was implemented in C++.
-
 ### Requirements
 - Python (perferably 3.4 or above)
-- C++
 
 ### How to Run
 1. On terminal, install the required Python libraries from the `requirements.txt` file. This can be done by running `pip install -r requirements.txt` on the terminal.
