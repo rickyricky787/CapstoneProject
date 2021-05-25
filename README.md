@@ -17,4 +17,4 @@ The linear reression portion of the project was implemented in Python. The reinf
 ### How to Run
 1. On terminal, install the required Python libraries from the `requirements.txt` file. This can be done by running `pip install -r requirements.txt` on the terminal.
 2. Run `python3 stock_predictor.py`. This will output several .csv files containing predicted closing stock values for the next 60 days.
-3. ???
+3. Run 'stockdrl.py' to run the reinforcement learning portion. This is only ran with the AMC prediction so make sure that the 'AMC_pred' is in the same folder.
