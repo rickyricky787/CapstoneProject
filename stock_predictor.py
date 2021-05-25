@@ -194,7 +194,7 @@ if __name__ == "__main__":
         pred_df.columns = ["Date", "Close"]
 
         # Saving file to csv
-        save_name = stock + "_Pred.csv"
+        save_name = stock + "_pred.csv"
         pred_df.to_csv(save_name, index=False)
         print("Predictions computed, saved as " + save_name + ".")
 
